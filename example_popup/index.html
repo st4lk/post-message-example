@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>postMessage example with popup</title>
+</head>
+<body>
+    <button onclick="openPopup()">Open popup</button>
+    <button onclick="sendMessage()">Send message to popup</button>
+
+    <script type="text/javascript">
+        const targetURL = 'http://localhost:8080/popup.html';
+        let newWindow;
+
+        function openPopup() {
+           newWindow = window.open(targetURL, 'Example Popup', 'height=300,width=500');
+           if (window.focus) {
+                newWindow.focus();
+            }
+           return false;
+        };
+
+        function sendMessage() {
+            newWindow.postMessage('Hello from parent window!', targetURL);
+        }
+    </script>
+</body>
+</html>

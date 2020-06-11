@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Popup</title>
+</head>
+<body>
+    <h1>Hello, I'm popup</h1>
+
+    <div>Recived messages:</div>
+    <ul id="received-messages"><ul>
+
+    <script type="text/javascript">
+
+
+    function receiveMessage(event) {
+      console.log('Received event', event);
+      // verify the origin!
+      let node = document.createElement("li");
+      const textnode = document.createTextNode(`origin: ${event.origin} data: ${event.data}`);
+      node.appendChild(textnode);
+      document.getElementById("received-messages").appendChild(node);
+    }
+    window.addEventListener("message", receiveMessage, false);
+    </script>
+</body>
+</html>

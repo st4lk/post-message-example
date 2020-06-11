@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>postMessage example with iframe</title>
+</head>
+<body>
+    <iframe id="target-iframe" src="http://localhost:8080/iframe.html" style="height: 300px"></iframe>
+    <button onclick="sendMessage()">Send message to iframe</button>
+
+    <script type="text/javascript">
+        const targetURL = 'http://localhost:8080/iframe.html';
+        const iframeWindow = document.getElementById("target-iframe").contentWindow;;
+
+        function sendMessage() {
+            iframeWindow.postMessage('Hello from parent window!', targetURL);
+        }
+    </script>
+</body>
+</html>
